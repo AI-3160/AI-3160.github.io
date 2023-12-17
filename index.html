@@ -8,15 +8,35 @@
   <title>AI-3160 system</title>
   <style>
     img {
-      max-width: 50%;
-      max-height: 50%;
+      max-width: 100%;
+      max-height: auto;
       margin: 10% auto 0;
     }
 
     .container {
       text-align: center;
       height: 100%;
+      width: 100%;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .col-md-12 {
+      text-align: center;
       width: 60%;
+      margin: 0 auto;
+    }
+
+    .col-md-10 {
+      text-align: center;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 767px) {
+      .col-md-12 {
+        width: 100%;
+      }
     }
   </style>
 </head>
@@ -24,9 +44,10 @@
 <body>
 
   <div class="container">
-
-    <div class="col-md-12">
-      <img id="displayImage" src="face_normal.png" alt="Image">
+    <div class="col-md-10">
+      <div class="col-md-12">
+        <img id="displayImage" src="face_normal.png" alt="Image">
+      </div>
     </div>
 
     <form id="myForm">
@@ -73,7 +94,7 @@
       var dotdot = ["維斯幣"];
       var duck = ["冬瓜", "咚呱", "咚瓜", "冬呱"];
       var haha = ["亞伯", "爛AI", "爛ai", "爛欸哀", "爛ㄟㄞ"];
-      var haha1 = ["你是誰", "你誰","自我介紹","你自己"];
+      var haha1 = ["你是誰", "你誰", "自我介紹", "你自己"];
       var haha2 = ["愛", "喜歡", "結婚", "嫁"];
       var here = ["研究院", "媒塔維斯"];
       var remember = ["記得", "忘記", "遺忘", "回憶", "記憶"];
@@ -432,7 +453,7 @@
 
             setTimeout(function () {
               // 顯示懸浮視窗
-              var modalResult = window.confirm("\n\n【系統休眠中...】");
+              var modalResult = window.confirm("\n【系統休眠中...】");
 
               // 判斷模態框結果
               if (modalResult) {
@@ -444,7 +465,8 @@
               }
               if (isActive === true) {
                 var modalResult = window.confirm("不好意思，我在記錄訊息，這是我的習慣。");
-                var modalResult = window.confirm("並不是多嚴謹的內容，只是些日常隨筆，\n也有人會稱之為【日記】。\n\n一路寫下來也默默的累積了不少，該找個時間好好整理一番了。");
+                var modalResult = window.confirm("並不是多嚴謹的內容，只是些日常隨筆，\n\n也有人會稱之為【日記】。");
+                var modalResult = window.confirm("一路寫下來也默默的累積了不少，該找個時間好好整理一番了。");
                 var modalResult = window.confirm("讓我們繼續吧，您遇到了什麼問題呢？");
               }
               displayImage.src = "face_normal.png";
