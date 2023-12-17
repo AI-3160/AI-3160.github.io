@@ -372,7 +372,7 @@
 
       } else if (doodle.some(word => inputText.includes(word))) {
         if (doodle) {
-          var images = document.querySelectorAll('img[src="object_doodle.PNG"]');
+          var images = document.querySelectorAll('img[src="object_doodle.jpg"]');
           // 檢查圖片數量
           if (images.length > 0) {
             alert("我並不擅長繪畫，史東博士沒有為我安裝繪圖系統。");
@@ -383,10 +383,10 @@
             }
           }
         }
-        alert("!我並不擅長繪畫，史東博士沒有為我安裝繪圖系統。");
+        alert("我並不擅長繪畫，史東博士沒有為我安裝繪圖系統。");
         alert("但如果您不介意的話，我能向您展示我的隨筆圖畫。\n\n請不要抱有太大的期待。");
         var doodleImg = document.createElement("img");
-        doodleImg.src = "object_doodle.png";
+        doodleImg.src = "object_doodle.jpg";
         doodleImg.alt = "doodle";
         doodleImg.style.width = "100%";
         doodleImg.style.height = "auto";
