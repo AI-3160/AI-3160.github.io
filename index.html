@@ -26,7 +26,7 @@
   <div class="container">
 
     <div class="col-md-12">
-      <img id="sleepImage" src="face_normal.png" alt="Image">
+      <img id="displayImage" src="face_normal.png" alt="Image">
     </div>
 
     <form id="myForm">
@@ -108,7 +108,7 @@
 
       } else if (name.some(word => inputText.includes(word))) {
         // 更換圖片
-        sleepImage.src = "face_unhappy.png";
+        displayImage.src = "face_unhappy.png";
         setTimeout(function () {
           // 顯示懸浮視窗
           var userConfirmed = window.confirm("我叫做亞伯。");
@@ -116,7 +116,7 @@
           // 判斷用戶是否點擊了 "確定"
           if (userConfirmed) {
             // 在懸浮視窗關閉後更換圖片
-            sleepImage.src = "face_normal.png";
+            displayImage.src = "face_normal.png";
           }
         }, 100);
 
@@ -158,20 +158,20 @@
         // 
 
       } else if (meme.some(word => inputText.includes(word))) {
-        sleepImage.src = "face_happy.png";
+        displayImage.src = "face_happy.png";
         setTimeout(function () {
           var userConfirmed = window.confirm(":D");
           if (userConfirmed) {
-            sleepImage.src = "face_normal.png";
+            displayImage.src = "face_normal.png";
           }
         }, 100);
 
       } else if (meme2.some(word => inputText.includes(word))) {
-        sleepImage.src = "face_unhappy.png";
+        displayImage.src = "face_unhappy.png";
         setTimeout(function () {
           var userConfirmed = window.confirm(">:(");
           if (userConfirmed) {
-            sleepImage.src = "face_normal.png";
+            displayImage.src = "face_normal.png";
           }
         }, 100);
 
@@ -179,7 +179,7 @@
 
       } else if (meta.some(word => inputText.includes(word))) {
 
-        sleepImage.src = "face_error.png";
+        displayImage.src = "face_error.png";
         setTimeout(function () {
           var userConfirmed = window.confirm("偵測到系統保護詞彙，真實、虛擬、存在。\n 啟動 AI-3160 系統保護程式。 \n 切斷用戶連結中......");
           window.close();
@@ -411,7 +411,7 @@
 
       var idleTime = 0;
       var isActive = false;
-      var displayImage = document.getElementById('sleepImage');
+      var displayImage = document.getElementById('displayImage');
       var idleInterval = setInterval(timerIncrement, 10000);
 
       // 監聽用戶的活動事件
@@ -428,7 +428,7 @@
         idleTime += 1;
         if (isActive === false) {
           if (idleTime > 1) {
-            sleepImage.src = "face_sleep.png";
+            displayImage.src = "face_sleep.png";
 
             setTimeout(function () {
               // 顯示懸浮視窗
@@ -447,7 +447,7 @@
                 var modalResult = window.confirm("並不是多嚴謹的內容，只是些日常隨筆，\n也有人會稱之為【日記】。\n\n一路寫下來也默默的累積了不少，該找個時間好好整理一番了。");
                 var modalResult = window.confirm("讓我們繼續吧，您遇到了什麼問題呢？");
               }
-              sleepImage.src = "face_normal.png";
+              displayImage.src = "face_normal.png";
             }, 100);
 
           }
