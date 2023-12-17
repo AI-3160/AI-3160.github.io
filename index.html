@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <title>AI-3160 system</title>
+  <style>
+    img {
+      max-width: 50%;
+      max-height: 50%;
+      margin: 10% auto 0;
+    }
+
+    .container {
+      text-align: center;
+      height: 100%;
+      width: 60%;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="col-md-12">
+      <img id="sleepImage" src="face_normal.png" alt="Image">
+    </div>
+
+    <form id="myForm">
+      <div class="form-group mt-5">
+        <input type="text" class="form-control" id="textInput" placeholder="輸入內容">
+      </div>
+      <button type="submit" class="btn btn-primary">提交</button>
+    </form>
+
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+  <script>
+    window.onload = function () {
+      alert("您好，使用者。\n遇到了什麼問題嗎？");
+    };
+
+    document.getElementById("myForm").addEventListener("submit", function (event) {
+      event.preventDefault(); // 防止表單提交重載頁面
+
+      // 取得輸入的文字
+      var inputText = document.getElementById("textInput").value;
+      var displayImage = document.getElementById("displayImage");
+
+      // 指定的字詞陣列
+      var candy = ["糖果", "糖", "乖乖", "牛奶糖"];
+      var name = ["亞格", "亞格薩", "亞伯薩"];
+      var iris = ["艾芮絲", "芮絲"];
+      var stone = ["史東", "博士"];
+      var wayne = ["阿偉"];
+      var elbo = ["嗨", "早安", "顧問", "您好", "你好", "哈囉"];
+      var meme = ["做出:D", "做出：D", "擺出:D", "擺出：D"];
+      var meme2 = ["哈哈你笑了", "哈哈 你笑了", "哈哈，你笑了", "哈哈！你笑了"];
+      var meta = ["軟體", "假的", "不可能什麼叫做我們只是", "不可能 什麼叫做我們只是", "不可能什麼叫我們只是", "不可能 什麼叫我們只是", "真實", "虛擬", "存在"];
+      var dontforget = ["勿忘", "獻給媒塔維斯"];
+      var diary = ["日記", "日誌", "紀錄", "記錄", "訊息", "記了", "資訊", "內容"];
+      var leader = ["杜芬淑斯", "夢醒淑芬", "幽楓", "戚風", "秞子醬", "番茹醬", "進行式", "過去式", "歐咖咖", "蝦給", "看不到早八的太陽", "但我有三點的月亮", "張庭豪", "張家豪", "烏西迪西", "麻卡巴卡", "司伽拉法鳩"];
+      var everyone = ["杰擱淺了", "大意失今粥", "藍莓", "乖", "魚帶", "朱", "欽辰", "鄢醬", "玉仔", "工人Y", "小长颈", "阿妮醬", "NEO-八零", "阿亞", "內個厹", "這個朾", "寶", "韓澄", "罐頭", "螢光貢丸", "椰子乖乖", "酪梨", "滾滾長江東逝水", "ㄒㄧㄠ", "殘暴炎魔", "小江", "粉色貢丸", "芋泥好吃", "鯖魚", "阿偉本人", "一節", "嗷提斯", "那個鞥", "牛牛", "歐文", "◯ ◯ ◯", "村民A", "童凱", "艸", "☆☆", "勞贖", "我是辛酸的刈包", "再睡一夏", "Croissant ", "只有島輝家的人能夠使用聾魂", "水管工轉正", "提拉米舒", "薯泥薯來堡", "洛烟好蛤", "魚漿", "ㄎㄨㄟˊ", "夏美宣轉生夏消防", "微滷獸", "遠飛"];
+      var npc = ["賈斯珀", "芭芭拉", "大衛", "凱西", "小恐龍", "朵拉", "簡莉", "湯姆", "貝蒂", "安妮特", "羅絲", "貝拉", "流浪狗", "莫莉"];
+      var everyone2 = ["ㄋ", ":/", ":D"];
+      var dotdot = ["維斯幣"];
+      var duck = ["冬瓜", "咚呱", "咚瓜", "冬呱"];
+      var haha = ["亞伯", "爛AI", "爛ai", "爛欸哀", "爛ㄟㄞ"];
+      var haha1 = ["你是誰", "你誰","自我介紹","你自己"];
+      var haha2 = ["愛", "喜歡", "結婚", "嫁"];
+      var here = ["研究院", "媒塔維斯"];
+      var remember = ["記得", "忘記", "遺忘", "回憶", "記憶"];
+      var joke = ["笑話", "我笑"];
+      var dance = ["早操", "營歌", "唱歌", "跳舞"];
+      var dance2 = ["用心再用心"];
+      var password = ["密碼", "提示", "鑰匙"];
+      var music = ["歌", "推薦", "音樂"];
+      var cow = ["牛", "消失現象"];
+      var news = ["新進人員", "新晉人員", "新人"];
+      var who = ["是誰"];
+      var flower = ["花"];
+      var irisflower = ["鳶尾花"];
+      var myosotisflower = ["勿忘我"];
+      var doodle = ["畫"];
+
+
+      // 
+      // 
+      // 
+
+
+      if (iris.some(word => inputText.includes(word))) {
+        alert("艾芮絲是位聰明且優秀的研究專員，喜歡吃糖果。");
+
+      } else if (stone.some(word => inputText.includes(word))) {
+        alert("史東博士是媒塔維斯的創辦者，研究院的大家長。");
+
+      } else if (wayne.some(word => inputText.includes(word))) {
+        alert("阿偉是史東博士的研究助理，做事有點欠缺穩重。");
+
+
+      } else if (name.some(word => inputText.includes(word))) {
+        // 更換圖片
+        sleepImage.src = "face_unhappy.png";
+        setTimeout(function () {
+          // 顯示懸浮視窗
+          var userConfirmed = window.confirm("我叫做亞伯。");
+
+          // 判斷用戶是否點擊了 "確定"
+          if (userConfirmed) {
+            // 在懸浮視窗關閉後更換圖片
+            sleepImage.src = "face_normal.png";
+          }
+        }, 100);
+
+      } else if (elbo.some(word => inputText.includes(word))) {
+        alert("您好，找我有什麼事嗎？");
+
+        // 
+        // 
+        // 
+
+        var candy = false;
+        candy = false;
+
+      } else if (candy.some(word => inputText.includes(word))) {
+        if (candy) {
+          var images = document.querySelectorAll('img[src="object_candy.jpg"]');
+          // 檢查圖片數量
+          if (images.length > 15) {
+            alert("吃太多糖果對身體不好。");
+            candyImg.onload = function () {
+              // 在這裡添加你希望在圖片顯示後觸發的事件
+              candy = true;
+            }
+          }
+        }
+        alert("好的，請收下。");
+        // 創建圖片元素
+        var candyImg = document.createElement("img");
+        candyImg.src = "object_candy.jpg";
+        candyImg.alt = "candy";
+        candyImg.style.width = "100px";
+        candyImg.style.height = "100px";
+        candyImg.style.marginTop = "10px";
+        candyImg.style.marginBottom = "10px";
+
+        // 將圖片添加到網頁中，放在原有圖片下方
+        document.body.appendChild(candyImg);
+
+        // 
+
+      } else if (meme.some(word => inputText.includes(word))) {
+        sleepImage.src = "face_happy.png";
+        setTimeout(function () {
+          var userConfirmed = window.confirm(":D");
+          if (userConfirmed) {
+            sleepImage.src = "face_normal.png";
+          }
+        }, 100);
+
+      } else if (meme2.some(word => inputText.includes(word))) {
+        sleepImage.src = "face_unhappy.png";
+        setTimeout(function () {
+          var userConfirmed = window.confirm(">:(");
+          if (userConfirmed) {
+            sleepImage.src = "face_normal.png";
+          }
+        }, 100);
+
+
+
+      } else if (meta.some(word => inputText.includes(word))) {
+
+        sleepImage.src = "face_error.png";
+        setTimeout(function () {
+          var userConfirmed = window.confirm("偵測到系統保護詞彙，真實、虛擬、存在。\n 啟動 AI-3160 系統保護程式。 \n 切斷用戶連結中......");
+          window.close();
+        }, 100);
+
+        // 
+
+      } else if (myosotisflower.some(word => inputText === word)) {
+        alert("您對花感興趣嗎？\n那請容我為您介紹：");
+        alert("勿忘我，英文名稱是【forget-me-not】。\n最常見的品種擁有藍色的花瓣，花語是「永恆的愛與回憶」、「請你記得我」。\n這種花在研究助理間蔚為流行，似乎是因為有首同名歌曲很受到他們的喜愛。");
+
+      } else if (dontforget.some(word => inputText.includes(word))) {
+        alert("您是指這首歌吧。");
+        window.open("https://youtu.be/2p-D3kFzvpQ?si=_72SwLn0JqepDja3", "_blank");
+        // 
+
+
+      } else if (diary.some(word => inputText.includes(word))) {
+        alert("我認為窺探他人隱私是件有失禮儀的事。");
+        // 創建新的按鈕元素
+        var newImage = document.createElement("img");
+
+        // 設定圖片的屬性
+        newImage.src = "object_diary.png";  // 圖片的路徑
+        newImage.alt = "diary";  // 圖片的替代文本，用作提示
+
+        // 將圖片添加到網頁中，放在原有圖片下方 150% 的位置
+        document.body.appendChild(newImage);
+
+        // 設定圖片的樣式
+        newImage.style.position = "absolute";
+        newImage.style.top = "500%";
+        newImage.style.left = "50%";  // 如果需要居中，可以調整 left 屬性
+        newImage.style.transform = "translateX(-50%)";  // 使圖片水平居中
+
+        // 設定點擊圖片時的動作
+        newImage.onclick = function () {
+          // 開啟新分頁
+          window.open("https://verybigpudding.wixsite.com/object-diary", "_blank");
+        };
+
+      } else if (haha.some(word => inputText === word)) {
+        alert(":|");
+
+      } else if (haha1.some(word => inputText === word)) {
+        alert("我叫做亞伯，在媒塔維斯研究院擔任顧問一職，有任何問題都可以向我諮詢。");
+
+      } else if (who.some(word => inputText.includes(word))) {
+        alert("我的資料庫是完善且可靠的，答案可想而知。\n不過我需要更多可供辨識的資訊，我不會通靈。");
+
+
+      } else if (leader.some(word => inputText.includes(word))) {
+        alert("專案組長的一員。\n有專案組長的帶領，新晉人員們才能放心做研究，是研究院不可或缺的優秀人才。");
+        //
+
+      } else if (everyone.some(word => inputText.includes(word))) {
+        alert("專案助理的一員。\n有專案助理的協助，研究院才得以運行，是不可或缺的優秀人才。");
+        //
+
+      } else if (everyone2.some(word => inputText === word)) {
+        alert("專案助理的一員。\n有專案助理的協助，研究院才得以運行，是不可或缺的優秀人才。");
+        //
+
+      } else if (npc.some(word => inputText.includes(word))) {
+        alert("是常現身於研究院的其中一員。\n不論行政人員、約聘人員、參訪來賓或不速之客，各個都性格迥異，若遇見了不妨前去攀談，肯定能加深對研究院的了解。");
+        //
+
+      } else if (news.some(word => inputText.includes(word))) {
+        alert("是來研究院進行研究的優秀人才們。\n上一批新晉人員中似乎有幾位轉為正職了，真為他們感到高興。");
+
+      } else if (dotdot.some(word => inputText.includes(word))) {
+        alert("維斯幣是精神與榮譽的象徵，因此我無法隨意分發。\n\n除非您能夠對我提出的問題做出正解：");
+        alert("鴨子打鼓，會變成什麼呢？");
+        //
+
+        var duck = false;
+        duck = false;
+
+      } else if (duck.some(word => inputText.includes(word))) {
+        if (duck) {
+          var images = document.querySelectorAll('img[src="獻給媒塔維斯.png"]');
+          // 檢查圖片數量
+          if (images.length > 0) {
+            alert("請不要貪心。");
+            importantitem.onload = function () {
+              // 在這裡添加你希望在圖片顯示後觸發的事件
+              duck = true;
+            }
+          }
+        }
+        // 若 duck 為 false 且符合觸發條件，執行相應的邏輯
+        alert("回答正確。不愧是媒塔維斯的一份子，果然聰明絕頂。");
+        alert("那麼，我就將這枚維斯幣贈與給您，請妥善保管。");
+
+
+        if (duck) {
+          var importantitem = document.createElement("img");
+          // 設定圖片的屬性
+          importantitem.src = "獻給媒塔維斯.png";
+          importantitem.alt = "獻給媒塔維斯";
+          importantitem.style.width = "100px"; // 可以調整寬度
+          importantitem.style.height = "100px"; // 可以調整高度
+          importantitem.style.marginTop = "10px";
+          importantitem.style.marginBottom = "10px";
+
+          document.body.appendChild(importantitem);// 將圖片添加到網頁中，放在原有圖片下方
+          importantitem.onload = function () {
+            // 在這裡添加你希望在圖片顯示後觸發的事件
+            duck = true;
+          }
+        }
+        importantitem.onclick = function () {
+          // 開啟新分頁
+          window.open("【key】.html", "_blank");
+        };
+        // 
+
+
+
+
+      } else if (haha2.some(word => inputText.includes(word))) {
+        alert("【系統忙碌中，請稍後再試...】");
+
+      } else if (here.some(word => inputText.includes(word))) {
+        alert("媒塔維斯研究院進行著各式告樣的研究，例如量子傳送、記憶重塑、虛擬意識等。");
+
+      } else if (remember.some(word => inputText.includes(word))) {
+        alert("我的資料庫是完善且可靠的，答案可想而知。");
+
+      } else if (joke.some(word => inputText.includes(word))) {
+        // 隨機選擇一個文本內容
+        alert("好的，讓我來說一個笑話。")
+
+        var randomMessages = [
+          "鴨子組家具，會變成什麼呢？\n是ikea。(ike鴨)",
+          "鴨子感冒了，會變成什麼呢？\n是南瓜。(難呱)",
+          "鴨子笑了，會變成什麼呢？\n是西瓜。(嘻呱)",
+          "鴨子去西班牙，會變成什麼呢？\n是伊比利亞。(伊比利鴨)",
+          "鴨子搭計程車，會變成什麼呢？\n是小黃瓜。(小黃呱)",
+          "鴨子學壞了，會變成什麼呢？\n是派咪鴨。(閩南語，意同壞東西。)",
+          "鴨子在2023年11月15日，會變成什麼呢？\n是bike鴨。"
+        ];
+
+        var randomIndex = Math.floor(Math.random() * randomMessages.length);
+        var selectedMessage = randomMessages[randomIndex];
+
+        // 顯示選擇的文本內容
+        alert(selectedMessage);
+
+
+      } else if (dance.some(word => inputText.includes(word))) {
+        alert("ME-TA-VERSE，");
+        alert("嘿，嘿。");
+
+      } else if (dance2.some(word => inputText.includes(word))) {
+        alert("一起心電心。");
+
+      } else if (password.some(word => inputText.includes(word))) {
+        alert("我不理解您的意思。");
+        alert("但或許和花有關。");
+
+      } else if (music.some(word => inputText.includes(word))) {
+        alert("這首，我相當推薦。");
+        window.open("https://youtu.be/2p-D3kFzvpQ?si=_72SwLn0JqepDja3", "_blank");
+        // 
+
+      } else if (cow.some(word => inputText.includes(word))) {
+        alert("我們正是為此成立了VPRT，相信優秀的各位肯定能破解真相。");
+
+      } else if (flower.some(word => inputText.includes(word))) {
+        alert("您對花感興趣嗎？\n那請容我為您介紹：");
+
+        var randomMessages = [
+          "鳶尾花，學名 (Iris) 。\nIris是希臘神話中的彩虹女神，負責引領善良的已逝之人度過彩虹橋，將其靈魂帶往天國。\n根據地域不同，鳶尾花所代表的寓意也有所不同，包含「光明」、「自由」、「純真」、「復活與生命」、「長久的思念」、「絕望的愛」，等。\n\n因為名字和艾芮絲相同，艾芮絲和史東博士都很喜歡這種花。",
+          "勿忘我，英文名稱是【forget-me-not】。\n最常見的品種擁有藍色的花瓣，花語是「永恆的愛與回憶」、「請你記得我」。\n這種花在研究助理間蔚為流行，似乎是因為有首同名歌曲很受到他們的喜愛。"
+        ];
+
+        var randomIndex = Math.floor(Math.random() * randomMessages.length);
+        var selectedMessage = randomMessages[randomIndex];
+
+        // 顯示選擇的文本內容
+        alert(selectedMessage);
+
+      } else if (irisflower.some(word => inputText.includes(word))) {
+        alert("您對花感興趣嗎？\n那請容我為您介紹：");
+        alert("鳶尾花，學名 (Iris) 。\nIris是希臘神話中的彩虹女神，負責引領善良的已逝之人度過彩虹橋，將其靈魂帶往天國。\n根據地域不同，鳶尾花所代表的寓意也有所不同，包含「光明」、「自由」、「純真」、「復活與生命」、「長久的思念」、「絕望的愛」，等。\n\n因為名字和艾芮絲相同，艾芮絲和史東博士都很喜歡這種花。")
+
+
+
+
+      } else if (doodle.some(word => inputText.includes(word))) {
+        if (doodle) {
+          var images = document.querySelectorAll('img[src="object_doodle.png"]');
+          // 檢查圖片數量
+          if (images.length > 0) {
+            alert("我並不擅長繪畫，史東博士沒有為我安裝繪圖系統。");
+            alert("但如果您不介意的話，我能向您展示我的隨筆圖畫。\n\n請不要抱有太大的期待。");
+            doodleImg.onload = function () {
+              // 在這裡添加你希望在圖片顯示後觸發的事件
+              doodle = true;
+            }
+          }
+        }
+        alert("我並不擅長繪畫，史東博士沒有為我安裝繪圖系統。");
+        alert("但如果您不介意的話，我能向您展示我的隨筆圖畫。\n\n請不要抱有太大的期待。");
+        var doodleImg = document.createElement("img");
+        doodleImg.src = "object_doodle.png";
+        doodleImg.alt = "doodle";
+        doodleImg.style.width = "100vh";
+        doodleImg.style.height = "auto";
+        doodleImg.style.marginTop = "10px";
+        doodleImg.style.marginBottom = "10px";
+
+        // 將圖片添加到網頁中，放在原有圖片下方
+        document.body.appendChild(doodleImg);
+
+
+
+
+
+
+      } else {
+        // 其他反應，可以根據需求進行修改
+        switchImage(inputText);
+      }
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+
+      var idleTime = 0;
+      var isActive = false;
+      var displayImage = document.getElementById('sleepImage');
+      var idleInterval = setInterval(timerIncrement, 10000);
+
+      // 監聽用戶的活動事件
+      document.addEventListener('mousemove', function (e) {
+        resetTimer();
+      });
+
+      document.addEventListener('keypress', function (e) {
+        resetTimer();
+      });
+
+
+      function timerIncrement() {
+        idleTime += 1;
+        if (isActive === false) {
+          if (idleTime > 1) {
+            sleepImage.src = "face_sleep.png";
+
+            setTimeout(function () {
+              // 顯示懸浮視窗
+              var modalResult = window.confirm("\n\n【系統休眠中...】");
+
+              // 判斷模態框結果
+              if (modalResult) {
+                // 在懸浮視窗關閉後更換圖片 
+                isActive = true;
+              }
+              function showModal(message) {
+                return window.confirm(message);
+              }
+              if (isActive === true) {
+                var modalResult = window.confirm("不好意思，我在記錄訊息，這是我的習慣。");
+                var modalResult = window.confirm("並不是多嚴謹的內容，只是些日常隨筆，\n也有人會稱之為【日記】。\n\n一路寫下來也默默的累積了不少，該找個時間好好整理一番了。");
+                var modalResult = window.confirm("讓我們繼續吧，您遇到了什麼問題呢？");
+              }
+              sleepImage.src = "face_normal.png";
+            }, 100);
+
+          }
+        }
+
+      }
+      function resetTimer() {
+        idleTime = 0;
+      }
+    });
+
+
+
+    // 更換圖片的函數
+    function switchImage(text) {
+      var displayImage = document.getElementById("displayImage");
+
+      switch (text) {
+        default:
+          alert("我不理解您的意思。\n恕我無法回答。");
+      }
+    }
+  </script>
+
+
+</body>
+
+</html>
