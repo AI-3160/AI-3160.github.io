@@ -110,6 +110,7 @@
       var irisflower = ["鳶尾花"];
       var myosotisflower = ["勿忘我"];
       var doodle = ["畫"];
+      var samurai = ["武士","束梅"];
 
 
       // 
@@ -416,6 +417,11 @@
 
         // 將圖片添加到網頁中，放在原有圖片下方
         document.body.appendChild(doodleImg);
+
+         } else if (samurai.some(word => inputText.includes(word))) {
+        alert("好的，即將為您導覽至【束梅事変_終章：巔峰之戰】。");
+        window.open("https://54321meitarou.github.io/54321meitarou/", "_blank");
+        // 
 
 
 
